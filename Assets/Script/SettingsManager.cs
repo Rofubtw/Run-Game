@@ -23,25 +23,7 @@ public class SettingsManager : MonoBehaviour
         _gameSoundSlider.value = _memoryManagement.ReadFloatData("GameSound");
         _gameFxSlider.value = _memoryManagement.ReadFloatData("GameFx");
     }
-    public void ChangeSound(string WhichSound)
-    {
-        if(WhichSound== "MenuSound")
-        {
-            _memoryManagement.SaveFloatData("MenuSound", _menuSoundSlider.value);
-        }
-        if (WhichSound == "MenuFx")
-        {
-            _memoryManagement.SaveFloatData("MenuFx", _menuFxSlider.value);
-        }
-        if (WhichSound == "GameSound")
-        {
-            _memoryManagement.SaveFloatData("GameSound", _gameSoundSlider.value);
-        }
-        if (WhichSound == "GameFx")
-        {
-            _memoryManagement.SaveFloatData("GameFx", _gameFxSlider.value);
-        }
-    }
+    public void ChangeSound(string WhichSound) => _memoryManagement.SaveFloatData(WhichSound, _menuSoundSlider.value);
     public void GoBack()
     {
         PlayBackAudio();

@@ -38,17 +38,13 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindWithTag("MenuAudio"));
         MomentaryCharacterNumber = 1;
     }
+
     void Start()
     {
         _scene= SceneManager.GetActiveScene();
-        Debug.Log(MomentaryCharacterNumber);
         CreateEnemys();
-        //Debug.Log(_memoryManagement.ReadIntData("Point"));
     }
-    private void Update()
-    {
-        Debug.Log(MomentaryCharacterNumber);
-    }
+
     public void CreateEnemys()
     {
         for (int i = 0; i < MomentaryEnemyNumber; i++)
@@ -75,8 +71,6 @@ public class GameManager : MonoBehaviour
             Player.GetComponent<Animator>().SetBool("Attack", false);
             if (MomentaryCharacterNumber < MomentaryEnemyNumber || MomentaryCharacterNumber == MomentaryEnemyNumber)
             {
-                
-                //Debug.Log("Lose");
                 _operationPanels[3].SetActive(true);
             }
             else
@@ -97,7 +91,6 @@ public class GameManager : MonoBehaviour
                         _memoryManagement.SaveIntData("LastLevel", _memoryManagement.ReadIntData("LastLevel") + 1);
                     }       
                 }
-                //Debug.Log("Win");
                 _operationPanels[2].SetActive(true);
             }
         }
@@ -123,6 +116,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
     public void CreateExtinctionEffect(Vector3 newposition, bool Hammer = false, bool reducewhat=false) 
     {
         foreach (var item in ExtinctionEffects)
@@ -159,6 +153,7 @@ public class GameManager : MonoBehaviour
             WarSituation();
         }
     }
+
     public void TriggerEnemy()
     {
         foreach (var item in Enemys)
@@ -169,6 +164,7 @@ public class GameManager : MonoBehaviour
             }           
         }
     }
+
     public void RunExitButtons(string whichbutton)
     {
         Sounds[1].Play();
